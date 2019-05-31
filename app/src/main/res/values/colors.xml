@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/header</color>
+    <color name="colorPrimaryDark">@color/header</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <!-- Default -->
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
+
+    <color name="header">#20C0FC</color>
+
+
+</resources>
