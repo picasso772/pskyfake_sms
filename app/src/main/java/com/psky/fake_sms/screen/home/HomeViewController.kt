@@ -5,14 +5,17 @@ import android.view.ViewGroup
 import butterknife.OnClick
 import com.psky.fake_sms.R
 import com.psky.fake_sms.entity.ScreenHomeType
+import com.psky.fake_sms.screen.NavigationScreen
 import com.psky.fake_sms.screen.base.BaseFragment
 import com.psky.fake_sms.screen.home.chat.CreateChatViewController
 import com.psky.fake_sms.service.ScreenService
+import com.psky.fake_sms.utils.inTransaction
 import com.psky.fake_sms.utils.isHidden
 import kotlinx.android.synthetic.main.home_view_controller.*
 
-class HomeViewController : BaseFragment() {
+class HomeViewController : BaseFragment(), NavigationScreen {
 
+    val createChatViewController = CreateChatViewController()
     var openNavigation : Boolean = true
 
     override fun onStart() {
@@ -24,7 +27,8 @@ class HomeViewController : BaseFragment() {
     private var viewType = ScreenHomeType.createChat
 
     private fun firstLoadScreen() {
-        ScreenService.shared.setRootController(CreateChatViewController::class)
+        ScreenService.shared.setRootController(createChatViewController)
+        createChatViewController.setOnClickListener(this)
     }
 
     // region -> Actions
@@ -38,15 +42,20 @@ class HomeViewController : BaseFragment() {
             params.width = (0.8 * x).toInt()
             layoutMenu.layoutParams = params
             layoutHome.animate().setDuration(300L).translationX(0.8f * x).start()
+            createChatViewController.isMenuShowing = true
         } else {
             animationCloseNavigation()
         }
     }
 
     @OnClick(R.id.createChat) fun actionCreateChat() {
-        if (viewType != ScreenHomeType.createChat) {
-            viewType = ScreenHomeType.createChat
-            uploadViewLayout(ScreenHomeType.createChat)
+        if(openNavigation) {
+            if (viewType != ScreenHomeType.createChat) {
+                viewType = ScreenHomeType.createChat
+                uploadViewLayout(ScreenHomeType.createChat)
+            }
+        } else {
+            animationCloseNavigation()
         }
     }
 
@@ -64,9 +73,9 @@ class HomeViewController : BaseFragment() {
         }
     }
 
-//    @OnClick(R.id.layoutHome) fun actionLayoutHome() {
-//        animationCloseNavigation()
-//    }
+    @OnClick(R.id.layoutContent, R.id.header) fun actionLayoutContent() {
+        animationCloseNavigation()
+    }
     // endregion
 
     private fun clearForm() {
@@ -99,10 +108,15 @@ class HomeViewController : BaseFragment() {
 
     private fun animationCloseNavigation(){
         openNavigation = true
+        createChatViewController.isMenuShowing = false
         layoutHome.animate().setDuration(300L).translationX(0f).start()
     }
 
     override fun goBack() {
         // TODO: goBack
+    }
+
+    override fun closeLayoutMenu() {
+        animationCloseNavigation()
     }
 }
