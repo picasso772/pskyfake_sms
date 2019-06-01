@@ -1,7 +1,7 @@
 package com.psky.fake_sms.screen.home
 
 import android.support.v4.content.ContextCompat
-import android.view.View
+import android.view.ViewGroup
 import butterknife.OnClick
 import com.psky.fake_sms.R
 import com.psky.fake_sms.entity.ScreenHomeType
@@ -12,6 +12,8 @@ import com.psky.fake_sms.utils.isHidden
 import kotlinx.android.synthetic.main.home_view_controller.*
 
 class HomeViewController : BaseFragment() {
+
+    var openNavigation : Boolean = true
 
     override fun onStart() {
         super.onStart()
@@ -26,6 +28,20 @@ class HomeViewController : BaseFragment() {
     }
 
     // region -> Actions
+
+    @OnClick(R.id.buttonMenu) fun actionOpenMenu() {
+        if (openNavigation) {
+            openNavigation = false
+            val x = view?.width?.toFloat() ?: 0f
+            ScreenService.shared.setNavigationView(NavigationDrawer::class)
+            val params: ViewGroup.LayoutParams = layoutMenu.layoutParams
+            params.width = (0.8 * x).toInt()
+            layoutMenu.layoutParams = params
+            layoutHome.animate().setDuration(300L).translationX(0.8f * x).start()
+        } else {
+            animationCloseNavigation()
+        }
+    }
 
     @OnClick(R.id.createChat) fun actionCreateChat() {
         if (viewType != ScreenHomeType.createChat) {
@@ -48,22 +64,9 @@ class HomeViewController : BaseFragment() {
         }
     }
 
-    @OnClick(R.id.textHome, R.id.menu_home) fun actionMenu(sender: View){
-        // TODO : Home
-    }
-
-    @OnClick(R.id.textPrivacy, R.id.privacy_home) fun actionPrivacy(sender: View){
-        // TODO : Privacy
-    }
-
-    @OnClick(R.id.textShare, R.id.share_home) fun actionShare(sender: View){
-        // TODO : Share
-    }
-
-    @OnClick(R.id.textSupport, R.id.support_home) fun actionSupport(sender: View){
-        // TODO : Support
-    }
-
+//    @OnClick(R.id.layoutHome) fun actionLayoutHome() {
+//        animationCloseNavigation()
+//    }
     // endregion
 
     private fun clearForm() {
@@ -92,6 +95,11 @@ class HomeViewController : BaseFragment() {
                 listCall.setTextColor(ContextCompat.getColor(context!!, R.color.white))
             }
         }
+    }
+
+    private fun animationCloseNavigation(){
+        openNavigation = true
+        layoutHome.animate().setDuration(300L).translationX(0f).start()
     }
 
     override fun goBack() {

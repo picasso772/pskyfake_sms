@@ -40,6 +40,13 @@ class ScreenService {
         }
     }
 
+    fun <T : Fragment> setNavigationView(view: KClass<T>) {
+        if (activity == null) return
+        activity?.supportFragmentManager?.inTransaction {
+            add(R.id.layoutMenu, view.java.newInstance())
+        }
+    }
+
     fun removeSubView() {
         if (activity == null) return
         activity?.supportFragmentManager?.popBackStack()

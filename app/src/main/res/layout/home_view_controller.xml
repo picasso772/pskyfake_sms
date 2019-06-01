@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout
+<FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/header"
-        android:clickable="true">
+        android:orientation="horizontal">
 
-    <!-- Content -->
+    <FrameLayout
+            android:id="@+id/layoutMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"/>
+
     <android.support.constraint.ConstraintLayout
+            android:id="@+id/layoutHome"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/header"
+            android:clickable="true">
+
         <!-- Header -->
         <View
                 android:id="@+id/header"
@@ -56,6 +63,7 @@
                 android:src="@drawable/navi_pen"/>
 
         <LinearLayout
+                android:id="@+id/layoutContent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@color/white"
@@ -127,153 +135,4 @@
 
     </android.support.constraint.ConstraintLayout>
 
-    <!-- LeftLayout -->
-    <android.support.design.widget.NavigationView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="start">
-
-        <android.support.constraint.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-            <View
-                    android:id="@+id/view"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:background="@drawable/bg_menu_home"/>
-
-            <ImageView
-                    android:id="@+id/imageMenu"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    app:layout_constraintTop_toTopOf="@id/view"
-                    app:layout_constraintBottom_toBottomOf="@id/view"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:src="@drawable/menu_icon"
-                    android:scaleType="centerCrop"/>
-
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Fake Text"
-                    android:textColor="@color/white"
-                    android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:textSize="25sp"
-                    app:layout_constraintTop_toBottomOf="@id/imageMenu"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-
-            <ImageView
-                    android:id="@+id/menu_home"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/menu_home"
-                    android:scaleType="centerCrop"
-                    android:padding="10dp"
-                    android:layout_marginStart="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/view"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
-                    android:id="@+id/textHome"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="Home"
-                    android:textColor="@color/header"
-                    app:layout_constraintStart_toEndOf="@id/menu_home"
-                    app:layout_constraintTop_toTopOf="@id/menu_home"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="21sp"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="15dp"
-                    app:layout_constraintBottom_toBottomOf="@id/menu_home"/>
-
-            <ImageView
-                    android:id="@+id/privacy_home"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/menu_privacy"
-                    android:scaleType="centerCrop"
-                    android:padding="10dp"
-                    android:layout_marginStart="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/menu_home"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
-                    android:id="@+id/textPrivacy"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="Privacy Policy"
-                    android:textColor="@color/header"
-                    app:layout_constraintStart_toEndOf="@id/privacy_home"
-                    app:layout_constraintTop_toTopOf="@id/privacy_home"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="21sp"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="15dp"
-                    app:layout_constraintBottom_toBottomOf="@id/privacy_home"/>
-
-            <ImageView
-                    android:id="@+id/share_home"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/menu_share"
-                    android:scaleType="centerCrop"
-                    android:padding="10dp"
-                    android:layout_marginStart="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/privacy_home"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
-                    android:id="@+id/textShare"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="Share"
-                    android:textColor="@color/header"
-                    app:layout_constraintStart_toEndOf="@id/share_home"
-                    app:layout_constraintTop_toTopOf="@id/share_home"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="21sp"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="15dp"
-                    app:layout_constraintBottom_toBottomOf="@id/share_home"/>
-
-            <ImageView
-                    android:id="@+id/support_home"
-                    android:layout_marginTop="5dp"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/menu_support"
-                    android:scaleType="centerCrop"
-                    android:padding="10dp"
-                    android:layout_marginStart="5dp"
-                    app:layout_constraintTop_toBottomOf="@id/share_home"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
-            <TextView
-                    android:id="@+id/textSupport"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:text="Support"
-                    android:textColor="@color/header"
-                    app:layout_constraintStart_toEndOf="@id/support_home"
-                    app:layout_constraintTop_toTopOf="@id/support_home"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    android:textSize="21sp"
-                    android:gravity="center_vertical"
-                    android:layout_marginStart="15dp"
-                    app:layout_constraintBottom_toBottomOf="@id/support_home"/>
-        </android.support.constraint.ConstraintLayout>
-    </android.support.design.widget.NavigationView>
-
-
-</android.support.v4.widget.DrawerLayout>
+</FrameLayout>
