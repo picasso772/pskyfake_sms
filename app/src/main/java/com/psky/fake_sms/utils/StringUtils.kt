@@ -7,7 +7,7 @@ import java.lang.StringBuilder
  */
 fun String.toSnakeCase(): String {
     val currentValue = this
-    var value = StringBuilder()
+    val value = StringBuilder()
     for (x in 0 until currentValue.length) {
         val chart = currentValue[x]
         if (chart.isLowerCase()) {
