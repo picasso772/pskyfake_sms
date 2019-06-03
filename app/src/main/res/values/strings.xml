@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Fake Text Message</string>
+    <string name="privacy_app">
+        By using SmartApp Team\'s APP (the "APP"), you are agreeing to our privacy policy, which applies to the use of the Site and SmartApp Team applications.
+        SmartApp Team reserves the right at any time, without further notice, to change and modify this privacy policy.
+        You should check this privacy policy periodically.\n\n
+        We here at Eyewmind respect your privacy.
+        Here is a little explanation of when and why we might collect your data, and what we do width it.
+        If you have any questions about this Privacy Policy, please contact us !\n
+        I. Collection and Use of Personal Information\n\n
+        For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to Internet access.\n
+        The
+    </string>
 </resources>

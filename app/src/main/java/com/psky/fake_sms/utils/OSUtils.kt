@@ -1,8 +1,10 @@
 package com.psky.fake_sms.utils
 
 import android.content.Context
+import android.support.v4.app.Fragment
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import kotlin.reflect.KClass
 
 fun <E> MutableList<E>.append(element: E) {
     this.add(element)
@@ -14,6 +16,10 @@ fun <E> MutableList<E>.append(element: List<E>) {
 
 fun <E> MutableList<E>.removeAll() {
 
+}
+
+fun <T : Fragment> T.getKClass(): KClass<T> {
+    return javaClass.kotlin
 }
 
 /**

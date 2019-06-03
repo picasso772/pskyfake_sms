@@ -9,7 +9,7 @@ import com.psky.fake_sms.screen.NavigationScreen
 import com.psky.fake_sms.screen.base.BaseFragment
 import com.psky.fake_sms.screen.home.chat.CreateChatViewController
 import com.psky.fake_sms.service.ScreenService
-import com.psky.fake_sms.utils.inTransaction
+import com.psky.fake_sms.utils.getKClass
 import com.psky.fake_sms.utils.isHidden
 import kotlinx.android.synthetic.main.home_view_controller.*
 
@@ -37,7 +37,6 @@ class HomeViewController : BaseFragment(), NavigationScreen {
         if (openNavigation) {
             openNavigation = false
             val x = view?.width?.toFloat() ?: 0f
-            ScreenService.shared.setNavigationView(NavigationDrawer::class)
             val params: ViewGroup.LayoutParams = layoutMenu.layoutParams
             params.width = (0.8 * x).toInt()
             layoutMenu.layoutParams = params
@@ -76,6 +75,23 @@ class HomeViewController : BaseFragment(), NavigationScreen {
     @OnClick(R.id.layoutContent, R.id.header) fun actionLayoutContent() {
         animationCloseNavigation()
     }
+
+    @OnClick(R.id.menuHome, R.id.textHome) fun actionHome() {
+        animationCloseNavigation()
+    }
+
+    @OnClick(R.id.privacyHome, R.id.textPrivacy) fun actionPrivacy() {
+        animationCloseNavigation()
+    }
+
+    @OnClick(R.id.shareHome, R.id.textShare) fun actionShare() {
+        animationCloseNavigation()
+    }
+
+    @OnClick(R.id.supportHome, R.id.textSupport) fun actionSupport() {
+        animationCloseNavigation()
+    }
+
     // endregion
 
     private fun clearForm() {
@@ -116,7 +132,15 @@ class HomeViewController : BaseFragment(), NavigationScreen {
         // TODO: goBack
     }
 
+    // region -> NavigationScreen
+
     override fun closeLayoutMenu() {
         animationCloseNavigation()
     }
+
+    override fun openHomeMenu() {
+        animationCloseNavigation()
+    }
+
+    // endregion
 }
