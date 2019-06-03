@@ -33,10 +33,30 @@ class ScreenService {
         }
     }
 
+    /**
+     *
+     */
     fun <T : Fragment> setRootController(view: KClass<T>) {
         if (activity == null) return
         activity?.supportFragmentManager?.inTransaction {
             replace(R.id.containerHome, view.java.newInstance())
+        }
+    }
+
+    /**
+     *
+     */
+    fun <T : Fragment> setRootController(view: T) {
+        if (activity == null) return
+        activity?.supportFragmentManager?.inTransaction {
+            replace(R.id.containerHome, view)
+        }
+    }
+
+    fun <T : Fragment> setNavigationView(view: KClass<T>) {
+        if (activity == null) return
+        activity?.supportFragmentManager?.inTransaction {
+            add(R.id.layoutMenu, view.java.newInstance())
         }
     }
 
