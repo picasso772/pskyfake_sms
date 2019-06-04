@@ -7,9 +7,8 @@ import com.psky.fake_sms.R
 import com.psky.fake_sms.entity.ScreenHomeType
 import com.psky.fake_sms.screen.NavigationScreen
 import com.psky.fake_sms.screen.base.BaseFragment
-import com.psky.fake_sms.screen.home.chat.CreateChatViewController
+import com.psky.fake_sms.screen.home.createchat.CreateChatViewController
 import com.psky.fake_sms.service.ScreenService
-import com.psky.fake_sms.utils.getKClass
 import com.psky.fake_sms.utils.isHidden
 import kotlinx.android.synthetic.main.home_view_controller.*
 
