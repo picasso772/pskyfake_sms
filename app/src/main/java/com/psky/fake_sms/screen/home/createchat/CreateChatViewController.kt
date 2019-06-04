@@ -1,4 +1,4 @@
-package com.psky.fake_sms.screen.home.chat
+package com.psky.fake_sms.screen.home.createchat
 
 import butterknife.OnClick
 import com.psky.fake_sms.R

@@ -1,0 +1,44 @@
+package com.psky.fake_sms.data.dao
+
+import android.arch.persistence.room.*
+import com.psky.fake_sms.data.model.User
+import io.reactivex.Flowable
+
+@Dao
+interface UserDao {
+    /**
+     * Perform the insert function
+     */
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertUser(vararg user: User)
+
+    /**
+     * Perform the update function
+     */
+    @Update
+    fun updateUser(vararg user: User)
+
+    /**
+     * Perform the delete function
+     */
+    @Delete
+    fun deleteUser(user: User)
+
+    /**
+     * Perform the delete all function
+     */
+    @Query("DELETE FROM tb_user")
+    fun deleteAllUser()
+
+    /**
+     * Performs the function of retrieving a user record
+     */
+    @Query("SELECT  * FROM tb_user")
+    fun getAllUser(): Flowable<List<User>>
+
+    /**
+     * Performs the function of retrieving a user record
+     */
+    @Query("SELECT  * FROM tb_user WHERE id == :id")
+    fun getUser(id: Int): Flowable<User>
+}
