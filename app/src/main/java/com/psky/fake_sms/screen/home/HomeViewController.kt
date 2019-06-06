@@ -9,7 +9,9 @@ import com.psky.fake_sms.screen.NavigationScreen
 import com.psky.fake_sms.screen.base.BaseFragment
 import com.psky.fake_sms.screen.home.createchat.CreateChatViewController
 import com.psky.fake_sms.service.ScreenService
+import com.psky.fake_sms.utils.DataUtils
 import com.psky.fake_sms.utils.isHidden
+import com.psky.fake_sms.utils.negative
 import kotlinx.android.synthetic.main.home_view_controller.*
 
 class HomeViewController : BaseFragment(), NavigationScreen {
@@ -34,15 +36,9 @@ class HomeViewController : BaseFragment(), NavigationScreen {
 
     @OnClick(R.id.buttonMenu) fun actionOpenMenu() {
         if (openNavigation) {
-            openNavigation = false
-            val x = view?.width?.toFloat() ?: 0f
-            val params: ViewGroup.LayoutParams = layoutMenu.layoutParams
-            params.width = (0.8 * x).toInt()
-            layoutMenu.layoutParams = params
-            layoutHome.animate().setDuration(300L).translationX(0.8f * x).start()
-            createChatViewController.isMenuShowing = true
+            animationOpenMenu()
         } else {
-            animationCloseNavigation()
+            animationCloseMenu()
         }
     }
 
@@ -53,7 +49,7 @@ class HomeViewController : BaseFragment(), NavigationScreen {
                 uploadViewLayout(ScreenHomeType.createChat)
             }
         } else {
-            animationCloseNavigation()
+            animationCloseMenu()
         }
     }
 
@@ -72,23 +68,23 @@ class HomeViewController : BaseFragment(), NavigationScreen {
     }
 
     @OnClick(R.id.layoutContent, R.id.header) fun actionLayoutContent() {
-        animationCloseNavigation()
+        animationCloseMenu()
     }
 
     @OnClick(R.id.menuHome, R.id.textHome) fun actionHome() {
-        animationCloseNavigation()
+        animationCloseMenu()
     }
 
     @OnClick(R.id.privacyHome, R.id.textPrivacy) fun actionPrivacy() {
-        animationCloseNavigation()
+        animationCloseMenu()
     }
 
     @OnClick(R.id.shareHome, R.id.textShare) fun actionShare() {
-        animationCloseNavigation()
+        animationCloseMenu()
     }
 
     @OnClick(R.id.supportHome, R.id.textSupport) fun actionSupport() {
-        animationCloseNavigation()
+        animationCloseMenu()
     }
 
     // endregion
@@ -121,7 +117,18 @@ class HomeViewController : BaseFragment(), NavigationScreen {
         }
     }
 
-    private fun animationCloseNavigation(){
+    private fun animationOpenMenu() {
+        openNavigation = false
+        val x = view?.width?.toFloat() ?: 0f
+        val params: ViewGroup.LayoutParams = layoutMenu.layoutParams
+        params.width = (0.8 * x).toInt()
+        layoutMenu.layoutParams = params
+        layoutHome.animate().setDuration(300L).translationX(0.8f * x).start()
+        createChatViewController.isMenuShowing = true
+        DataUtils.shared.backID = 3
+    }
+
+    fun animationCloseMenu(){
         openNavigation = true
         createChatViewController.isMenuShowing = false
         layoutHome.animate().setDuration(300L).translationX(0f).start()
@@ -134,12 +141,23 @@ class HomeViewController : BaseFragment(), NavigationScreen {
     // region -> NavigationScreen
 
     override fun closeLayoutMenu() {
-        animationCloseNavigation()
+        animationCloseMenu()
     }
 
     override fun openHomeMenu() {
-        animationCloseNavigation()
+        animationCloseMenu()
     }
 
     // endregion
+
+
+    fun animationHideView() {
+        val view = view ?: return
+        view.animate().setDuration(300L).translationX(view.width.toFloat().negative).start()
+    }
+
+    fun animationShowView() {
+        val view = view ?: return
+        view.animate().setDuration(300L).translationX(0f).start()
+    }
 }

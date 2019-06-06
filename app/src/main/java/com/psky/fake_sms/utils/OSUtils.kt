@@ -38,3 +38,9 @@ fun View.hideKeyboard() {
     val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager ?: return
     imm.hideSoftInputFromWindow(windowToken, 0)
 }
+
+/**
+ * Used to convert positive float into negative float
+ */
+val Float.negative: Float
+    get() = -1F * this

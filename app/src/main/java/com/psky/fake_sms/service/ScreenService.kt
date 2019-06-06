@@ -16,6 +16,10 @@ class ScreenService {
             ScreenService.activity = activity
         }
 
+        fun getActivity(): AppCompatActivity? {
+            return activity
+        }
+
         val shared = SingletonService.get(ScreenService::class)
     }
 
@@ -31,14 +35,14 @@ class ScreenService {
     fun <T : Fragment> setSubView(view: KClass<T>) {
         if (activity == null) return
         activity?.supportFragmentManager?.inTransaction {
-            add(R.id.container, view.java.newInstance()).addToBackStack(null)
+            add(R.id.container, view.java.newInstance(), view.java.simpleName).addToBackStack(null)
         }
     }
 
     fun <T : Fragment> setSubView(view: T) {
         if (activity == null) return
         activity?.supportFragmentManager?.inTransaction {
-            add(R.id.container, view).addToBackStack(null)
+            add(R.id.container, view, view.javaClass.simpleName).addToBackStack(null)
         }
     }
 

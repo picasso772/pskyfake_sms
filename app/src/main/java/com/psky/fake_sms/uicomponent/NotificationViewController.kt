@@ -1,7 +1,10 @@
 package com.psky.fake_sms.uicomponent
 
+import butterknife.OnClick
+import com.psky.fake_sms.R
 import com.psky.fake_sms.entity.NotificationError
 import com.psky.fake_sms.screen.base.BaseFragment
+import com.psky.fake_sms.service.ScreenService
 import com.psky.fake_sms.utils.DataUtils
 import com.psky.fake_sms.utils.localizedString
 import kotlinx.android.synthetic.main.notification_view_controller.*
@@ -10,6 +13,9 @@ import kotlinx.android.synthetic.main.notification_view_controller.*
  * Create by AnhPQ in 04/06/2019
  */
 class NotificationViewController : BaseFragment() {
+
+    // region -> Life cycle
+
     override fun onStart() {
         super.onStart()
         when (DataUtils.shared.notificationErrorID) {
@@ -33,4 +39,14 @@ class NotificationViewController : BaseFragment() {
             }
         }
     }
+
+    // endregion
+
+    // region -> Actions
+
+    @OnClick(R.id.buttonOK) fun actionOK() {
+        ScreenService.shared.removeSubView()
+    }
+
+    // endregion
 }

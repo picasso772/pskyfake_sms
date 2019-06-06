@@ -108,4 +108,10 @@ class CreateChatViewController : BaseFragment() {
     }
 
     // endregion
+
+    fun clearView() {
+        textFieldName.setText("")
+        textFieldPhone.setText("")
+        textFielNumberDelay.setText("2")
+    }
 }

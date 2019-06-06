@@ -15,5 +15,7 @@
 
     <color name="border">#CCCFCFCF</color>
 
-    <color name="dialogBackground">#B3000000</color>
+    <color name="dialogBackground">#80000000</color>
+
+    <color name="clear">#00FFFFFF</color>
 </resources>
