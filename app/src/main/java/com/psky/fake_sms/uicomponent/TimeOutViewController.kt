@@ -6,6 +6,7 @@ import butterknife.OnClick
 import com.psky.fake_sms.R
 import com.psky.fake_sms.screen.base.BaseFragment
 import com.psky.fake_sms.screen.chat.ChatViewController
+import com.psky.fake_sms.screen.home.HomeViewController
 import com.psky.fake_sms.service.ScreenService
 import com.psky.fake_sms.service.SingletonService
 import com.psky.fake_sms.utils.Utils
@@ -35,8 +36,7 @@ class TimeOutViewController : BaseFragment() {
             }
 
             override fun onFinish() {
-                ScreenService.shared.removeSubView()
-                ScreenService.shared.setSubView(ChatViewController::class)
+                callChatViewController()
             }
         }
         countDownTimer.start()
@@ -44,11 +44,21 @@ class TimeOutViewController : BaseFragment() {
 
     // region -> Actions
 
-    @OnClick(R.id.buttonCancel)
-    fun actionCancel() {
+    @OnClick(R.id.buttonCancel) fun actionCancel() {
         countDownTimer.cancel()
         ScreenService.shared.removeSubView()
     }
 
+    @OnClick(R.id.buttonCall) fun actionCall() {
+        countDownTimer.cancel()
+        callChatViewController()
+    }
+
     // endregion
+
+    private fun callChatViewController() {
+        ScreenService.shared.removeSubView()
+        ScreenService.shared.setSubView(ChatViewController::class)
+        (activity?.supportFragmentManager?.fragments?.first() as HomeViewController).animationHideView()
+    }
 }

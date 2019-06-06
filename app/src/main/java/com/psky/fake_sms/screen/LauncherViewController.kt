@@ -9,10 +9,12 @@ import com.psky.fake_sms.data.AppDatabase
 import com.psky.fake_sms.data.dao.UserDao
 import com.psky.fake_sms.data.model.User
 import com.psky.fake_sms.entity.ScreenType
+import com.psky.fake_sms.screen.chat.ChatViewController
 import com.psky.fake_sms.screen.home.HomeViewController
 import com.psky.fake_sms.screen.splash.SplashViewController
 import com.psky.fake_sms.service.ScreenService
 import com.psky.fake_sms.service.SingletonService
+import com.psky.fake_sms.uicomponent.PopupSelectImageView
 import com.psky.fake_sms.utils.DataUtils
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -67,6 +69,19 @@ class LauncherViewController : AppCompatActivity() {
             1 -> {
                 DataUtils.shared.backID = 0
                 ScreenService.shared.removeSubView()
+            }
+            2 -> {
+                DataUtils.shared.backID = 1
+                (supportFragmentManager.fragments.last() as PopupSelectImageView).animationClosePopup()
+            }
+            3 -> {
+                DataUtils.shared.backID = 0
+                (supportFragmentManager.fragments.first() as HomeViewController).animationCloseMenu()
+            }
+            4 -> {
+                DataUtils.shared.backID = 0
+                (supportFragmentManager.fragments.first() as HomeViewController).animationShowView()
+                (supportFragmentManager.fragments.last() as ChatViewController).animationHideView()
             }
         }
 
