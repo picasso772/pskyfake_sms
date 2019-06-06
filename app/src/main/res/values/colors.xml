@@ -10,5 +10,10 @@
 
     <color name="header">#20C0FC</color>
 
+    <color name="customBlue">#20A4FC</color>
+    <color name="customBGBlue">#0445B4</color>
 
+    <color name="border">#CCCFCFCF</color>
+
+    <color name="dialogBackground">#B3000000</color>
 </resources>

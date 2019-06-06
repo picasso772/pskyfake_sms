@@ -8,7 +8,7 @@ import com.psky.fake_sms.utils.Define
 @Entity(tableName = Define.User.TABLE_NAME)
 data class User(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int? = null,
     @ColumnInfo(name = Define.User.NAME)
     val name: String,
     @ColumnInfo(name = Define.User.PHONE)

@@ -26,12 +26,23 @@ class ScreenService {
         }
     }
 
+    // region -> setSubView
+
     fun <T : Fragment> setSubView(view: KClass<T>) {
         if (activity == null) return
         activity?.supportFragmentManager?.inTransaction {
             add(R.id.container, view.java.newInstance()).addToBackStack(null)
         }
     }
+
+    fun <T : Fragment> setSubView(view: T) {
+        if (activity == null) return
+        activity?.supportFragmentManager?.inTransaction {
+            add(R.id.container, view).addToBackStack(null)
+        }
+    }
+
+    // endregion
 
     /**
      *

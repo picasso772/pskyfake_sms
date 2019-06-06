@@ -1,29 +1,31 @@
 package com.psky.fake_sms.screen
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.psky.fake_sms.R
 import com.psky.fake_sms.data.AppDatabase
-import com.psky.fake_sms.data.UserDataSource
-import com.psky.fake_sms.data.repository.UserRepository
+import com.psky.fake_sms.data.dao.UserDao
+import com.psky.fake_sms.data.model.User
 import com.psky.fake_sms.entity.ScreenType
 import com.psky.fake_sms.screen.home.HomeViewController
 import com.psky.fake_sms.screen.splash.SplashViewController
 import com.psky.fake_sms.service.ScreenService
 import com.psky.fake_sms.service.SingletonService
 import com.psky.fake_sms.utils.DataUtils
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 
 class LauncherViewController : AppCompatActivity() {
-
-    private var compositeDisposable: CompositeDisposable? = null
-    private var userRepository: UserRepository? = null
 
     companion object {
         val shared = SingletonService.get(LauncherViewController::class)
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.launcher_view_controller)
@@ -34,13 +36,6 @@ class LauncherViewController : AppCompatActivity() {
         //      WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         //  )
         addSubScreen()
-
-        // initializer room
-        compositeDisposable = CompositeDisposable()
-
-        // database
-        val appDatabase = AppDatabase.getAppdatabase(this) ?: return
-        userRepository = UserRepository.getInstance(UserDataSource.getInstance(appDatabase.userDao()))
     }
 
     /**

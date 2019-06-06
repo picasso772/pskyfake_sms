@@ -11,3 +11,12 @@ enum class ScreenHomeType {
     listChat,
     listCall;
 }
+
+enum class NotificationError {
+    none,
+    nameEmpty,
+    phoneEmpty,
+    phoneNotValid,
+    timeOutEmpty,
+    imageEmpty
+}

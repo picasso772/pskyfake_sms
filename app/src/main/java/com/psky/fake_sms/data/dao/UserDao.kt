@@ -33,8 +33,8 @@ interface UserDao {
     /**
      * Performs the function of retrieving a user record
      */
-    @Query("SELECT  * FROM tb_user")
-    fun getAllUser(): Flowable<List<User>>
+    @Query("SELECT * FROM tb_user")
+    fun getUsers(): List<User>
 
     /**
      * Performs the function of retrieving a user record

@@ -6,10 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import butterknife.ButterKnife
+import com.psky.fake_sms.data.AppDatabase
+import com.psky.fake_sms.data.dao.UserDao
 import com.psky.fake_sms.service.SingletonService
 import com.psky.fake_sms.utils.toSnakeCase
 
 open class BaseFragment : Fragment() {
+
+    protected var db: AppDatabase? = null
+    protected var userDao: UserDao? = null
 
     companion object {
         val shared = SingletonService.get(BaseFragment::class)

@@ -80,4 +80,64 @@
             android:background="@drawable/bg_edittext_create_chat"
             android:layout_marginStart="20dp"
             tools:ignore="RtlSymmetry,TextFields"/>
+
+    <TextView
+            android:id="@+id/textViewUnit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/ sec"
+            android:textStyle="bold"
+            android:textColor="@color/customBlue"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/textFieldPhone"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <EditText
+            app:layout_constraintEnd_toStartOf="@id/textViewUnit"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintTop_toTopOf="@id/textViewUnit"
+            app:layout_constraintBottom_toBottomOf="@id/textViewUnit"
+            android:id="@+id/textFielNumberDelay"
+            android:layout_width="30dp"
+            android:textAlignment="center"
+            android:text="2"
+            android:inputType="number"
+            android:maxLength="2"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_text_delay_time"
+            android:textColor="@color/white"
+            android:padding="3dp"/>
+
+    <TextView
+            android:id="@+id/textViewDelayTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delay time"
+            android:textStyle="bold"
+            android:textColor="@color/customBlue"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/textFieldPhone"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="5dp"
+            app:layout_constraintEnd_toStartOf="@id/textFielNumberDelay"/>
+
+    <Button
+            android:id="@+id/buttonStart"
+            android:layout_width="wrap_content"
+            android:text="START"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_button_start"
+            app:layout_constraintTop_toBottomOf="@id/textViewDelayTime"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 </android.support.constraint.ConstraintLayout>
