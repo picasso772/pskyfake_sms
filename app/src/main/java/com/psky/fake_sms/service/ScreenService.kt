@@ -75,6 +75,17 @@ class ScreenService {
         }
     }
 
+    // region ->
+
+    fun <T : Fragment> setContentView(view:  KClass<T>){
+        if (activity == null) return
+        activity?.supportFragmentManager?.inTransaction {
+            add(R.id.layoutContent, view.java.newInstance())
+        }
+    }
+
+    // endregion
+
     fun removeSubView() {
         if (activity == null) return
         activity?.supportFragmentManager?.popBackStack()

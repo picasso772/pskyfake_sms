@@ -6,13 +6,16 @@ import android.arch.persistence.room.RoomDatabase
 import android.arch.persistence.room.TypeConverters
 import android.content.Context
 import com.psky.fake_sms.data.converter.DateTypeConverter
+import com.psky.fake_sms.data.dao.MessageDao
 import com.psky.fake_sms.data.dao.UserDao
+import com.psky.fake_sms.data.model.MessageChat
 import com.psky.fake_sms.data.model.User
 
-@Database(entities = arrayOf(User::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(User::class, MessageChat::class), version = 1, exportSchema = false)
 @TypeConverters(DateTypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun messageDao(): MessageDao
 
     companion object {
         var instance: AppDatabase? = null

@@ -8,7 +8,7 @@
         android:layout_height="match_parent"
         android:id="@+id/layoutView">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/buttonImage"
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -17,8 +17,10 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="30dp"
             android:padding="1dp"
-            android:background="@drawable/bg_image_create_chat"
-            android:layout_marginStart="20dp"/>
+            android:scaleType="centerCrop"
+            android:layout_marginStart="20dp"
+            app:civ_border_color="@color/customBlue"
+            app:civ_border_width="1dp"/>
 
     <View
             android:layout_marginTop="2dp"
@@ -49,6 +51,16 @@
             android:background="@drawable/bg_edittext_create_chat"
             android:layout_marginStart="20dp"
             tools:ignore="RtlSymmetry,TextFields"/>
+
+    <ImageView
+            android:id="@+id/imageGetContact"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/icon_contact"
+            app:layout_constraintTop_toTopOf="@id/textFieldName"
+            app:layout_constraintBottom_toBottomOf="@id/textFieldName"
+            app:layout_constraintEnd_toEndOf="@id/textFieldName"
+            android:layout_marginEnd="10dp"/>
 
     <View
             android:layout_marginTop="2dp"
@@ -124,17 +136,27 @@
             android:layout_marginEnd="5dp"
             app:layout_constraintEnd_toStartOf="@id/textFielNumberDelay"/>
 
+    <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintTop_toTopOf="@id/textViewDelayTime"
+            app:layout_constraintBottom_toBottomOf="@id/textViewDelayTime"
+            app:layout_constraintEnd_toStartOf="@id/textViewDelayTime"
+            android:src="@drawable/home_clock"/>
+
     <Button
             android:id="@+id/buttonStart"
             android:layout_width="wrap_content"
             android:text="START"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:layout_height="40dp"
+            android:gravity="center"
             android:background="@drawable/bg_button_start"
             app:layout_constraintTop_toBottomOf="@id/textViewDelayTime"
             app:layout_constraintBottom_toBottomOf="parent"

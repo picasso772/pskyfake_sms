@@ -14,5 +14,9 @@ data class User(
     @ColumnInfo(name = Define.User.PHONE)
     val phone: String,
     @ColumnInfo(name = Define.User.IMAGE)
-    val image: String
+    val image: String,
+    @ColumnInfo(name = Define.User.TIME_MESSAGES)
+    var timeMessages: Long? = null,
+    @ColumnInfo(name = Define.User.MESSAGE_LAST)
+    var messageLast: String? = null
 )

@@ -1,17 +1,29 @@
 <resources>
     <string name="app_name">Fake Text Message</string>
     <string name="privacy_app">
-        By using SmartApp Team\'s APP (the "APP"), you are agreeing to our privacy policy, which applies to the use of
-        the Site and SmartApp Team applications.
-        SmartApp Team reserves the right at any time, without further notice, to change and modify this privacy policy.
-        You should check this privacy policy periodically.\n\n
-        We here at Eyewmind respect your privacy.
-        Here is a little explanation of when and why we might collect your data, and what we do width it.
-        If you have any questions about this Privacy Policy, please contact us !\n
-        I. Collection and Use of Personal Information\n\n
-        For a better experience, while using our Service, I may require you to provide us with certain personally
-        identifiable information, including but not limited to Internet access.\n
-        The
+        By using SmartApp Team\'s APP (the “APP”), you are agreeing to our privacy policy, which applies to the use of the Site and SmartApp Team applications. SmartApp Team reserves the right at any time, without further notice, to change and modify this privacy policy. You should check this privacy policy periodically.
+
+        <![CDATA[<br><br>]]>We here at Eyewind respect your privacy. Here is a little explanation of when and why we might collect your data, and what we do with it . If you have any questions about this Privacy Policy, please contact us！
+        <![CDATA[<br>]]>I. Collection and Use of Personal Information
+
+        <![CDATA[<br><br>]]>For a better experience, while using our Service, I may require you to provide us with certain personally identifiable information, including but not limited to Internet access. The information that I request will be retained on your device and is not collected by me in any way.
+
+        <![CDATA[<br><br>]]>Log Data
+
+        <![CDATA[<br><br>]]>I want to inform you that whenever you use my Service, in a case of an error in the app I collect data and information (through third party products) on your phone called Log Data. This Log Data may include information such as your device Internet Protocol (“IP”) address, device name, operating system version, the configuration of the app when utilizing my Service, the time and date of your use of the Service, and other statistics.
+
+        <![CDATA[<br><br>]]>II. Information Sharing
+
+        <![CDATA[<br><br>]]>Unless the Law forces us, we will not share any personal information with any unaffiliated third party for any purpose…ever.
+        <![CDATA[<br>]]>III. Security
+
+        <![CDATA[<br><br>]]>While we take all necessary measures to protect your personal information, no method of transmission over the Internet or method of electronic storage is fully secure, therefore we cannot guarantee complete security.
+        <![CDATA[<br>]]>In order to provide products or services you have requested;We require that these parties agree to process such information based on our instructions and in compliance with this policy;There are other instances in which we may divulge your personal information, such as when required by law, regulation, or litigation.
+        <![CDATA[<br>]]>If SmartApp becomes involved in a merger, acquisition, or any form of sale of some or all of its assets, we will provide notice before personal information is transferred and becomes subject to a different privacy policy.
+
+        <![CDATA[<br><br>]]>Contact Us
+
+        <![CDATA[<br><br>]]>If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me:<![CDATA[<font color=#20C0FC>tueanhoang.devios2011@gmail.com</font>]]>
     </string>
 
     <!-- NotificationError -->
@@ -20,4 +32,15 @@
     <string name="PHONE_NOT_VALID">Phone number is wrong</string>
     <string name="IMAGE_EMPTY">Please choose the avatar</string>
     <string name="TIME_OUT_EMPTY">Please enter the correct timeout</string>
+
+    <!-- Share -->
+    <string name="text_share"></string>
+
+    <!-- Rate -->
+    <string name="title_rate">Rate the app</string>
+    <string name="content_rate">If you enjoy using the app, would you mind taking a moment to rate it? It won\'t take more than a minute. \nThank you for your support</string>
+    <string name="rate_later">LATER</string>
+    <string name="rate_now">RATE NOW</string>
+    <string name="rate_no">NO, THANKS</string>
+
 </resources>

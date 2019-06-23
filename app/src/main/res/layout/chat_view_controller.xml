@@ -17,6 +17,7 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
+            android:id="@+id/imageBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/header"
@@ -37,6 +38,7 @@
             app:layout_constraintEnd_toEndOf="@id/header">
 
         <TextView
+                android:id="@+id/buttonSenderFriend"
                 android:layout_width="0dp"
                 android:minWidth="60dp"
                 android:padding="5dp"
@@ -52,6 +54,7 @@
               android:background="@color/white"/>
 
         <TextView
+                android:id="@+id/buttonSenderMe"
                 android:gravity="center"
                 android:padding="5dp"
                 android:textStyle="bold"
@@ -64,6 +67,7 @@
     </LinearLayout>
 
     <ImageView
+            android:id="@+id/buttonSave"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/header"
@@ -75,6 +79,7 @@
 
     <!-- Content -->
     <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerViewMessage"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintTop_toBottomOf="@id/header"
@@ -110,6 +115,8 @@
             android:hint="Send message..."
             android:paddingLeft="10dp"
             android:textSize="16sp"
+            android:maxLines="1"
+            android:singleLine="true"
             android:paddingRight="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/imageCamera"

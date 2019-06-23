@@ -8,8 +8,7 @@ enum class ScreenType {
 
 enum class ScreenHomeType {
     createChat,
-    listChat,
-    listCall;
+    listChat;
 }
 
 enum class NotificationError {

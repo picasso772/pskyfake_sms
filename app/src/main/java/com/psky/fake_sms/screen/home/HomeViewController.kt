@@ -1,28 +1,45 @@
 package com.psky.fake_sms.screen.home
 
+import android.content.Context
+import android.content.Intent
 import android.support.v4.content.ContextCompat
+import android.text.Html
+import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import butterknife.OnClick
+import com.bumptech.glide.Glide
 import com.psky.fake_sms.R
 import com.psky.fake_sms.entity.ScreenHomeType
 import com.psky.fake_sms.screen.NavigationScreen
 import com.psky.fake_sms.screen.base.BaseFragment
-import com.psky.fake_sms.screen.home.createchat.CreateChatViewController
+import com.psky.fake_sms.screen.chat.CreateChatViewController
+import com.psky.fake_sms.screen.chat.ListChatViewController
 import com.psky.fake_sms.service.ScreenService
 import com.psky.fake_sms.utils.DataUtils
+import com.psky.fake_sms.utils.clearFocusAndHideKeyboard
 import com.psky.fake_sms.utils.isHidden
 import com.psky.fake_sms.utils.negative
+import kotlinx.android.synthetic.main.create_chat_view_controller.*
 import kotlinx.android.synthetic.main.home_view_controller.*
+import java.io.File
 
+@Suppress("DEPRECATION")
 class HomeViewController : BaseFragment(), NavigationScreen {
 
-    val createChatViewController = CreateChatViewController()
+    private val createChatViewController = CreateChatViewController()
+    private val listChatViewController = ListChatViewController()
+
     var openNavigation : Boolean = true
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        firstLoadScreen()
+    }
 
     override fun onStart() {
         super.onStart()
         buttonNaviPen.isHidden = true
-        firstLoadScreen()
     }
 
     private var viewType = ScreenHomeType.createChat
@@ -35,6 +52,7 @@ class HomeViewController : BaseFragment(), NavigationScreen {
     // region -> Actions
 
     @OnClick(R.id.buttonMenu) fun actionOpenMenu() {
+        view?.clearFocusAndHideKeyboard()
         if (openNavigation) {
             animationOpenMenu()
         } else {
@@ -47,6 +65,7 @@ class HomeViewController : BaseFragment(), NavigationScreen {
             if (viewType != ScreenHomeType.createChat) {
                 viewType = ScreenHomeType.createChat
                 uploadViewLayout(ScreenHomeType.createChat)
+                ScreenService.shared.setRootController(createChatViewController)
             }
         } else {
             animationCloseMenu()
@@ -57,13 +76,7 @@ class HomeViewController : BaseFragment(), NavigationScreen {
         if (viewType != ScreenHomeType.listChat) {
             viewType = ScreenHomeType.listChat
             uploadViewLayout(ScreenHomeType.listChat)
-        }
-    }
-
-    @OnClick(R.id.listCall) fun actionListCall() {
-        if (viewType != ScreenHomeType.listCall) {
-            viewType = ScreenHomeType.listCall
-            uploadViewLayout(ScreenHomeType.listCall)
+            ScreenService.shared.setRootController(listChatViewController)
         }
     }
 
@@ -72,15 +85,30 @@ class HomeViewController : BaseFragment(), NavigationScreen {
     }
 
     @OnClick(R.id.menuHome, R.id.textHome) fun actionHome() {
+        titleHeader.text = "Home"
+        layoutPrivacyPolicy.visibility = View.GONE
+        optionHome.visibility = View.VISIBLE
+        containerHome.visibility = View.VISIBLE
         animationCloseMenu()
     }
 
     @OnClick(R.id.privacyHome, R.id.textPrivacy) fun actionPrivacy() {
+        titleHeader.text = "Privacy Policy"
+        layoutPrivacyPolicy.visibility = View.VISIBLE
+        textPrivacyPolicy.text = Html.fromHtml(resources.getString(R.string.privacy_app))
+        optionHome.visibility = View.GONE
+        containerHome.visibility = View.GONE
         animationCloseMenu()
     }
 
     @OnClick(R.id.shareHome, R.id.textShare) fun actionShare() {
-        animationCloseMenu()
+        // animationCloseMenu()
+        val intent = Intent(android.content.Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        val body :String = "I found best application to Create Fake Time Results... You must try too... Download Fake Time App Now... \n" +
+                "link........"
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, body)
+        startActivity(intent)
     }
 
     @OnClick(R.id.supportHome, R.id.textSupport) fun actionSupport() {
@@ -91,12 +119,10 @@ class HomeViewController : BaseFragment(), NavigationScreen {
 
     private fun clearForm() {
         createChat.setBackgroundResource(R.drawable.bg_option_home_left)
-        listChat.setBackgroundResource(R.drawable.bg_option_home_center)
-        listCall.setBackgroundResource(R.drawable.bg_option_home_right)
+        listChat.setBackgroundResource(R.drawable.bg_option_home_right)
 
         createChat.setTextColor(ContextCompat.getColor(context!!, R.color.header))
         listChat.setTextColor(ContextCompat.getColor(context!!, R.color.header))
-        listCall.setTextColor(ContextCompat.getColor(context!!, R.color.header))
     }
 
     private fun uploadViewLayout(type: ScreenHomeType) {
@@ -107,12 +133,8 @@ class HomeViewController : BaseFragment(), NavigationScreen {
                 createChat.setTextColor(ContextCompat.getColor(context!!, R.color.white))
             }
             ScreenHomeType.listChat -> {
-                listChat.setBackgroundResource(R.drawable.bg_option_selected_home_center)
+                listChat.setBackgroundResource(R.drawable.bg_option_selected_home_right)
                 listChat.setTextColor(ContextCompat.getColor(context!!, R.color.white))
-            }
-            ScreenHomeType.listCall -> {
-                listCall.setBackgroundResource(R.drawable.bg_option_selected_home_right)
-                listCall.setTextColor(ContextCompat.getColor(context!!, R.color.white))
             }
         }
     }
@@ -157,6 +179,8 @@ class HomeViewController : BaseFragment(), NavigationScreen {
     }
 
     fun animationShowView() {
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+        createChatViewController.resetImage()
         val view = view ?: return
         view.animate().setDuration(300L).translationX(0f).start()
     }

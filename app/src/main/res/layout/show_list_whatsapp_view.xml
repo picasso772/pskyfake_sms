@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#F0EFF7">
+
+    <android.support.constraint.ConstraintLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="#F7F7F7">
+
+        <ImageView
+                android:id="@+id/buttonBack"
+                android:padding="5dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerCrop"
+                android:layout_marginStart="11dp"
+                android:src="@drawable/whatsapp_arrow_left"/>
+
+        <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chats"
+                app:layout_constraintTop_toTopOf="@id/buttonBack"
+                app:layout_constraintBottom_toBottomOf="@id/buttonBack"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+        <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/whatsapp_create"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginEnd="11dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+    <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/border"
+            app:layout_constraintTop_toBottomOf="@id/top"/>
+
+    <LinearLayout
+            android:id="@+id/layoutSearch"
+            app:layout_constraintTop_toBottomOf="@id/separator"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:background="@drawable/bg_wechat_search"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:text="Broadcast Lists"
+                android:gravity="center_vertical"
+                android:textColor="#348DE0"
+                android:paddingLeft="15dp"/>
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:text="New Group"
+                android:gravity="center_vertical|right"
+                android:paddingRight="15dp"
+                android:textColor="#348DE0"/>
+
+    </LinearLayout>
+
+    <View
+            android:id="@+id/separator2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/border"
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch"/>
+
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerMessages"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/layoutSearch"
+            app:layout_constraintBottom_toTopOf="@id/footer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@id/footer"
+            android:background="#C6C6C6"/>
+
+    <LinearLayout
+            android:id="@+id/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="5"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:background="#FAFAFA"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+            <ImageView
+                    android:src="@drawable/whatsapp_status"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#A2A0A0"
+                    android:layout_height="wrap_content"
+                    android:text="Status"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+            <ImageView
+                    android:src="@drawable/whatsapp_phone"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#A2A0A0"
+                    android:layout_height="wrap_content"
+                    android:text="Calls"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+            <ImageView
+                    android:src="@drawable/whatsapp_camera"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#A2A0A0"
+                    android:layout_height="wrap_content"
+                    android:text="Camera"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+            <ImageView
+                    android:src="@drawable/whatsapp_bubble"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#348DE0"
+                    android:layout_height="wrap_content"
+                    android:text="Chats"/>
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center">
+            <ImageView
+                    android:src="@drawable/whatsapp_setting"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"/>
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:textColor="#A2A0A0"
+                    android:layout_height="wrap_content"
+                    android:text="Settings"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

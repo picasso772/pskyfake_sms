@@ -3,6 +3,7 @@ package com.psky.fake_sms.data.dao
 import android.arch.persistence.room.*
 import com.psky.fake_sms.data.model.User
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 interface UserDao {
@@ -10,7 +11,7 @@ interface UserDao {
      * Perform the insert function
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(vararg user: User)
+    fun insertUser(user: User) : Long
 
     /**
      * Perform the update function
@@ -29,6 +30,12 @@ interface UserDao {
      */
     @Query("DELETE FROM tb_user")
     fun deleteAllUser()
+
+    /**
+     * Performs the function of retrieving a user record
+     */
+    @Query("SELECT count(*) FROM tb_user")
+    fun getCountUser(): Long
 
     /**
      * Performs the function of retrieving a user record

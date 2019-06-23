@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:padding="10dp">
+
+    <!-- Messages -->
+    <View
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_layout_list_chat_parent"
+            app:layout_constraintTop_toTopOf="@id/layoutMessages"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toStartOf="@id/layoutMessages"
+            app:layout_constraintEnd_toEndOf="@id/layoutMessages"/>
+
+    <View
+            android:id="@+id/layoutMessages"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/margin_list_chat"
+            android:layout_marginEnd="@dimen/margin_list_chat"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_layout_list_chat"/>
+
+    <View
+            android:layout_marginStart="15dp"
+            android:id="@+id/viewMessages"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_list_chat_one"
+            app:layout_constraintTop_toTopOf="@id/layoutMessages"
+            app:layout_constraintBottom_toBottomOf="@id/layoutMessages"
+            app:layout_constraintStart_toStartOf="@id/layoutMessages"/>
+
+    <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/stickMessages"
+            app:layout_constraintTop_toTopOf="@id/viewMessages"
+            app:layout_constraintBottom_toBottomOf="@id/viewMessages"
+            app:layout_constraintStart_toStartOf="@id/viewMessages"
+            app:layout_constraintEnd_toEndOf="@id/viewMessages"
+            android:background="@drawable/bg_list_chat_two"/>
+
+    <TextView
+            android:id="@+id/textMessages"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@id/viewMessages"
+            app:layout_constraintBottom_toBottomOf="@id/viewMessages"
+            app:layout_constraintStart_toEndOf="@id/viewMessages"
+            android:text="Messages"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/customBlue"
+            android:layout_marginStart="10dp"/>
+
+    <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/type_chat_call"
+            app:layout_constraintTop_toTopOf="@id/viewMessages"
+            app:layout_constraintBottom_toBottomOf="@id/viewMessages"
+            app:layout_constraintStart_toEndOf="@id/textMessages"
+            app:layout_constraintEnd_toEndOf="@id/layoutMessages"
+            app:layout_constraintHorizontal_bias="1"
+            android:layout_marginEnd="15dp"/>
+
+    <!-- Messenger  -->
+    <View
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_layout_list_chat_parent"
+            app:layout_constraintTop_toTopOf="@id/layoutMessenger"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toStartOf="@id/layoutMessenger"
+            app:layout_constraintEnd_toEndOf="@id/layoutMessenger"/>
+
+    <View
+            android:id="@+id/layoutMessenger"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutMessages"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/margin_list_chat"
+            android:layout_marginEnd="@dimen/margin_list_chat"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_layout_list_chat"/>
+
+    <View
+            android:layout_marginStart="15dp"
+            android:id="@+id/viewMessenger"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_list_chat_one"
+            app:layout_constraintTop_toTopOf="@id/layoutMessenger"
+            app:layout_constraintBottom_toBottomOf="@id/layoutMessenger"
+            app:layout_constraintStart_toStartOf="@id/layoutMessenger"/>
+
+    <View
+            android:layout_width="20dp"
+            android:visibility="gone"
+            android:id="@+id/stickMessenger"
+            android:layout_height="20dp"
+            app:layout_constraintTop_toTopOf="@id/viewMessenger"
+            app:layout_constraintBottom_toBottomOf="@id/viewMessenger"
+            app:layout_constraintStart_toStartOf="@id/viewMessenger"
+            app:layout_constraintEnd_toEndOf="@id/viewMessenger"
+            android:background="@drawable/bg_list_chat_two"/>
+
+    <TextView
+            android:id="@+id/textMessenger"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/viewMessenger"
+            app:layout_constraintBottom_toBottomOf="@id/viewMessenger"
+            app:layout_constraintStart_toEndOf="@id/viewMessenger"
+            android:text="Messenger"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/customBlue"
+            android:layout_marginStart="10dp"/>
+
+    <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/type_chat_messenger"
+            app:layout_constraintTop_toTopOf="@id/viewMessenger"
+            app:layout_constraintBottom_toBottomOf="@id/viewMessenger"
+            app:layout_constraintStart_toEndOf="@id/textMessenger"
+            app:layout_constraintEnd_toEndOf="@id/layoutMessenger"
+            app:layout_constraintHorizontal_bias="1"
+            android:layout_marginEnd="15dp"/>
+
+    <!-- Line -->
+    <View
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_layout_list_chat_parent"
+            app:layout_constraintTop_toTopOf="@id/layoutLine"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toStartOf="@id/layoutLine"
+            app:layout_constraintEnd_toEndOf="@id/layoutLine"/>
+
+    <View
+            android:id="@+id/layoutLine"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutMessenger"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/margin_list_chat"
+            android:layout_marginEnd="@dimen/margin_list_chat"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_layout_list_chat"/>
+
+    <View
+            android:layout_marginStart="15dp"
+            android:id="@+id/viewLine"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_list_chat_one"
+            app:layout_constraintTop_toTopOf="@id/layoutLine"
+            app:layout_constraintBottom_toBottomOf="@id/layoutLine"
+            app:layout_constraintStart_toStartOf="@id/layoutLine"/>
+
+    <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            android:id="@+id/stickLine"
+            app:layout_constraintTop_toTopOf="@id/viewLine"
+            app:layout_constraintBottom_toBottomOf="@id/viewLine"
+            app:layout_constraintStart_toStartOf="@id/viewLine"
+            app:layout_constraintEnd_toEndOf="@id/viewLine"
+            android:background="@drawable/bg_list_chat_two"/>
+
+    <TextView
+            android:id="@+id/textLine"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/viewLine"
+            app:layout_constraintBottom_toBottomOf="@id/viewLine"
+            app:layout_constraintStart_toEndOf="@id/viewLine"
+            android:text="Line"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/customBlue"
+            android:layout_marginStart="10dp"/>
+
+    <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/type_chat_line"
+            app:layout_constraintTop_toTopOf="@id/viewLine"
+            app:layout_constraintBottom_toBottomOf="@id/viewLine"
+            app:layout_constraintStart_toEndOf="@id/textLine"
+            app:layout_constraintEnd_toEndOf="@id/layoutLine"
+            app:layout_constraintHorizontal_bias="1"
+            android:layout_marginEnd="15dp"/>
+
+    <!-- Wechat -->
+    <View
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_layout_list_chat_parent"
+            app:layout_constraintTop_toTopOf="@id/layoutWechat"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toStartOf="@id/layoutWechat"
+            app:layout_constraintEnd_toEndOf="@id/layoutWechat"/>
+
+    <View
+            android:id="@+id/layoutWechat"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutLine"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/margin_list_chat"
+            android:layout_marginEnd="@dimen/margin_list_chat"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_layout_list_chat"/>
+
+    <View
+            android:layout_marginStart="15dp"
+            android:id="@+id/viewWechat"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_list_chat_one"
+            app:layout_constraintTop_toTopOf="@id/layoutWechat"
+            app:layout_constraintBottom_toBottomOf="@id/layoutWechat"
+            app:layout_constraintStart_toStartOf="@id/layoutWechat"/>
+
+    <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            android:id="@+id/stickWechat"
+            app:layout_constraintTop_toTopOf="@id/viewWechat"
+            app:layout_constraintBottom_toBottomOf="@id/viewWechat"
+            app:layout_constraintStart_toStartOf="@id/viewWechat"
+            app:layout_constraintEnd_toEndOf="@id/viewWechat"
+            android:background="@drawable/bg_list_chat_two"/>
+
+    <TextView
+            android:id="@+id/textWechat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/viewWechat"
+            app:layout_constraintBottom_toBottomOf="@id/viewWechat"
+            app:layout_constraintStart_toEndOf="@id/viewWechat"
+            android:text="Wechat"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/customBlue"
+            android:layout_marginStart="10dp"/>
+
+    <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/type_chat_wechat"
+            app:layout_constraintTop_toTopOf="@id/viewWechat"
+            app:layout_constraintBottom_toBottomOf="@id/viewWechat"
+            app:layout_constraintStart_toEndOf="@id/textWechat"
+            app:layout_constraintEnd_toEndOf="@id/layoutWechat"
+            app:layout_constraintHorizontal_bias="1"
+            android:layout_marginEnd="15dp"/>
+
+    <!-- WhatsApp -->
+    <View
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_layout_list_chat_parent"
+            app:layout_constraintTop_toTopOf="@id/layoutWhatsapp"
+            android:layout_marginTop="2dp"
+            android:layout_marginStart="2dp"
+            app:layout_constraintStart_toStartOf="@id/layoutWhatsapp"
+            app:layout_constraintEnd_toEndOf="@id/layoutWhatsapp"/>
+
+    <View
+            android:id="@+id/layoutWhatsapp"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutWechat"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="@dimen/margin_list_chat"
+            android:layout_marginEnd="@dimen/margin_list_chat"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_layout_list_chat"/>
+
+    <View
+            android:layout_marginStart="15dp"
+            android:id="@+id/viewWhatsapp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/bg_list_chat_one"
+            app:layout_constraintTop_toTopOf="@id/layoutWhatsapp"
+            app:layout_constraintBottom_toBottomOf="@id/layoutWhatsapp"
+            app:layout_constraintStart_toStartOf="@id/layoutWhatsapp"/>
+
+    <View
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            android:id="@+id/stickWhatsApp"
+            app:layout_constraintTop_toTopOf="@id/viewWhatsapp"
+            app:layout_constraintBottom_toBottomOf="@id/viewWhatsapp"
+            app:layout_constraintStart_toStartOf="@id/viewWhatsapp"
+            app:layout_constraintEnd_toEndOf="@id/viewWhatsapp"
+            android:background="@drawable/bg_list_chat_two"/>
+
+    <TextView
+            android:id="@+id/textWhatsapp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="@id/viewWhatsapp"
+            app:layout_constraintBottom_toBottomOf="@id/viewWhatsapp"
+            app:layout_constraintStart_toEndOf="@id/viewWhatsapp"
+            android:text="Whatsapp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/customBlue"
+            android:layout_marginStart="10dp"/>
+
+    <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/type_chat_whatsapp"
+            app:layout_constraintTop_toTopOf="@id/viewWhatsapp"
+            app:layout_constraintBottom_toBottomOf="@id/viewWhatsapp"
+            app:layout_constraintStart_toEndOf="@id/textWhatsapp"
+            app:layout_constraintEnd_toEndOf="@id/layoutWhatsapp"
+            app:layout_constraintHorizontal_bias="1"
+            android:layout_marginEnd="15dp"/>
+
+    <Button
+            android:id="@+id/buttonStart"
+            android:layout_width="wrap_content"
+            android:text="START"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:background="@drawable/bg_button_start"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutWhatsapp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+</android.support.constraint.ConstraintLayout>

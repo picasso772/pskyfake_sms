@@ -33,7 +33,7 @@
                         android:id="@+id/imageMenu"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/menu_icon"
+                        android:src="@drawable/ios_marketing"
                         android:scaleType="centerCrop"/>
 
             </android.support.v7.widget.CardView>
@@ -217,6 +217,24 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:orientation="vertical">
 
+            <android.support.v4.widget.NestedScrollView
+                    android:visibility="gone"
+                    android:id="@+id/layoutPrivacyPolicy"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                    <TextView
+                            android:id="@+id/textPrivacyPolicy"
+                            android:layout_width="match_parent"
+                            android:padding="10dp"
+                            android:textSize="16sp"
+                            android:textColor="@color/black"
+                            android:layout_height="match_parent"/>
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+
             <LinearLayout
                     android:padding="1dp"
                     android:id="@+id/optionHome"
@@ -230,7 +248,8 @@
                     android:background="@drawable/bg_list_option_home"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:orientation="horizontal"
-                    android:weightSum="3">
+                    android:weightSum="2">
+
                 <TextView
                         android:id="@+id/createChat"
                         android:layout_width="0dp"
@@ -247,18 +266,6 @@
                 <TextView
                         android:id="@+id/listChat"
                         android:text="List Chat"
-                        android:textColor="@color/header"
-                        android:gravity="center"
-                        android:textSize="16sp"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
-
-                <View style="@style/VerticalSeperator"/>
-
-                <TextView
-                        android:id="@+id/listCall"
-                        android:text="List Call"
                         android:textColor="@color/header"
                         android:gravity="center"
                         android:textSize="16sp"
